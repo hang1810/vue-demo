@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>VueJS Tutorials</title>
     <link href="styles.css" rel="stylesheet" />
     <script src="https://unpkg.com/vue"></script>
@@ -10,13 +10,42 @@
 
 <body>
     <div id="vue-app">
-        <h1>Hey, {{ name }}</h1>
+        <p>Hey, {{ name }}</p>
     </div>
+    <hr />
     <div id="vue-app-2">
-        <h1>Hey, {{ name2 }}</h1>
+        <p>Hey, {{ name2 }}</p>
+
     </div>
+    <hr />
+    <div id="vue-app-3">
+        <p>Hey, {{ name }}</p>
+        <p>{{greet('nignt')}}</p>
+        <p>{{greet2('HELLO')}}</p>
+    </div>
+    <hr />
+    <div id="vue-app-4">
+        <p>Hey, {{ name }}</p>
+        <!-- 绑定一个 attribute -->
+        <p><a v-bind:href="vueUrl">vueUrl</a></p>
+        <p><a :href="vueUrl">vueUrl</a></p>
+        <p v-html="vueUrlTag"> vueUrl </p>
+        <input v-bind:value="name" />
+    </div>
+    <hr />
+    <div id="vue-app-5">
+        <p>Hey, {{ name }}</p>
+        <button v-on:click="onClick(12)">v-on</button>
+        <p>{{onClick('nignt')}}</p>
+        <button v-on="{mouseenter:onEnter,mouseleave:onOut}">点我</button>
+        <form v-on:submit.prevent="onSubmit">
+            <input type="text" />
+            <button type="submit">提交</button>
+        </form>
+    </div>
+    <hr />
 </body>
 
-<script src="app.js"></script>
+<script src=" app.js"></script>
 
 </html>
