@@ -31,7 +31,7 @@
         <p><a :href="vueUrl">vueUrl</a></p>
         <p v-html="vueUrlTag"> vueUrl </p>
         <input v-bind:value="name" />
-    </div>
+     </div>
     <hr />
     <div id="vue-app-5">
         <p>Hey, {{ name }}</p>
@@ -42,8 +42,165 @@
             <input type="text" />
             <button type="submit">提交</button>
         </form>
+        <form v-on:keyup="onEnter">
+            <input type="text">
+            <button type="submit">提交</button>
+        </form>
+
     </div>
     <hr />
+    <div id="vue-app-6">
+        <p>Hey, {{name}}</p>
+        <input type="text" v-model="name"> 实时更新 <br>
+        <input type="text" v-model.lazy="name">延时更新 <br>
+        <input type="text" v-model.number="name">数字 <br>
+        <input type="text" v-model.trim="name">去空格（中间的去不掉） <br>
+        <br>
+        <label>
+            男
+            <input type="radio" value="male"  v-model="sex"  >
+        </label>
+        <label>
+            女
+            <input type="radio" value="female" v-model="sex"  >
+        </label>
+        {{sex}} <br>
+        <label>
+            男
+            <input type="checkbox" value="male"  v-model="sexs"  >
+        </label>
+        <label>
+            女
+            <input type="checkbox" value="female" v-model="sexs"  >
+        </label>
+        {{sexs}} <br>
+        <textarea v-model="article"  cols="30" rows="10"></textarea><br>
+        <select v-model="from">
+            <option value="1">王家沟</option>
+            <option value="2">背背山</option>
+        </select>
+        from={{from}}
+        <select v-model="dest" multiple>
+            <option value="1">王家沟</option>
+            <option value="2">背背山</option>
+            <option value="3">背背山</option>
+            <option value="4">背背山</option>
+            <option value="5">背背山</option>
+            <option value="6">背背山</option>
+        </select>
+        dest={{dest}}
+    </div>
+    <hr />
+    <div id="vue-app-7">
+        <p>Hey, {{name}}</p> 
+        <br>循环  
+        <ul id="example-1">
+            <li v-for="item in items" :key="item.message">
+              {{ item.message }}
+            </li>
+        </ul>   
+        <br>
+        <div v-if="role == 'admin'|| role == 'super_admin' ">管理员你好</div>  
+        <div v-else-if="role == 'hr'">hr您好</div>  
+        <div v-else>无权限</div>
+    </div>
+    <hr />  
+    <div id="vue-app-8">
+        <p>Hey, {{name}}</p> 
+        <br> 
+        <table>
+            <thead>
+                <th>学科</th>
+                <th>分数</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>数学</td>
+                    <td><input type="text" v-model.numer="math"> </td>
+                </tr>
+                <tr>
+                    <td>语文</td>
+                    <td><input type="text" v-model.numer="physics"> </td>
+                </tr>
+                <tr>
+                    <td>英文</td>
+                    <td><input type="text" v-model.numer="english"> </td>
+                </tr>
+                <tr>
+                    <td>总分</td>
+                    <td>{{sum}} </td>
+                </tr>
+                <tr>
+                    <td>平均分</td>
+                    <td>{{average}} </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <hr />  
+
+    <div id="vue-app-9">
+        ref = document.getz.....  <br>
+        <label>姓名</label>
+        <input type="text" ref="name" @keyup.on="getName"/>
+        <span>{{name}}</span><br>
+       
+
+        <label>年龄</label>
+        <input type="text" ref="age" @keyup="getAge"/>
+        <span>{{age}}</span>
+    </div>
+    <hr />
+    <div id="vue-app-10">
+        <h1>Conditionals</h1>
+            <button v-on:click="error = !error">Toggle error</button>
+            <button v-on:click="success = !success">Toggle success</button>
+             <p v-if="error" class="error">There has been an error</p>
+            <p v-else-if="success" class="success">Whooo, success :)</p>  
+            <p v-show="error" class="error">There has been an error</p>
+            <p v-show="success" class="success">Whooo, success :)</p>
+    </div>
+    <hr />
+    <div id="vue-app-11">
+      <p>{{title}}</p><br>
+      <p>{{greet}}</p>
+    </div>
+    <hr />
+
+    <div id="vue-app-12">
+        <p>{{title}}</p><br>
+        <p>{{greet}}</p>   
+        <button @click="changeApp11Title">change app one title </button>
+   </div>
+    <hr />   
+    <div id="vue-app-13">
+        <p>{{title}}</p><br>
+        <Greeting/>
+      </div>
+      <hr />
+  
+      <div id="vue-app-14">
+          <p>{{title}}</p><br>
+          <Greeting></Greeting>   
+     </div>
+      <hr /> 
+
+
+      <div id="vue-app-15">
+          <form  v-on:submit.prevent="onSubmit">
+              <input type="text" v-model="todo.title">
+              <input type="checkbox" v-model="todo.completed">
+              <input type="submit" value="提交">
+          </form>
+        <ul>
+            <li v-for="todo in todos">
+                <h3>{{todo.title}}</h3>
+                <p v-if="todo.completed">{{todo.completed}}</p>
+            </li>
+        </ul>
+     FETCH  请求 <br>  百度 搜索 jsonplaceholder-->http://jsonplaceholder.typicode.com/ <br>
+   </div>
+    <hr /> 
 </body>
 
 <script src=" app.js"></script>
